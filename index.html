@@ -74,10 +74,15 @@ background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
    
 
 <script>
-    const arr= []
+    let arr= []
+    const database =localStorage.getItem("arr");
+    if (database){
+        arr =JSON.parse(database)
+    }
     function add(){
         const ipelement= document.getElementById("ipem");
         arr.push(ipelement.value);
+        localStorage.setItem("arr",JSON.stringify(arr));
         
         ipelement.value=""
         render();
